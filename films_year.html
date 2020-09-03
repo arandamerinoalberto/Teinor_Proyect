@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+	<title>Website para añadir películas</title>
+</head>
+<body>
+<!-- Add js files -->
+<script src="js/highmovies.js"></script>
+<script src="js/checkmovies.js"></script>
+<script src="services/checkmovies.php"></script>
+<!-- Add styles css -->
+<link rel="stylesheet" href="css/styles.css">	
+<!-- Library of jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Script for load films -->
+<script>
+//Load all movies when page loads
+//cargar todos los usuarios cuando se cargue la página
+    window.onload=function() {
+      checkMovies()
+    }
+
+//activar el listener del botón de alta
+    window.onload=function() {
+      //document.getElementById('alta').onclick=altausuario
+      //listener botón alta usuario
+      document.getElementById('form').onsubmit=function() {
+      //desactivar el comportamiento por defecto
+      event.preventDefault()
+      highmovies()
+    }
+  }
+
+$(document).ready(function(){
+  $("button").click(function(){
+  $("a").click(function(event){
+    /*event.preventDefault();*/
+  });
+    $("#film").fadeToggle();
+    $("#time").fadeToggle("slow");
+    $("#send").fadeToggle("slow");
+  });
+  });
+
+//Function for sort table
+function sortTable() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("myTable");
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[0];
+      y = rows[i + 1].getElementsByTagName("TD")[0];
+      //check if the two rows should switch place:
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+
+//Function for search films
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+</script>
+
+<h2>SISTEMA PARA AÑADIR PELÍCULAS</h2>
+<form id="form">
+  <button>Añadir</button><br><br>
+    <!--<label>Nombre de la película</label> -->
+    <input type="text" id="film" placeholder="Añadir película" required>
+    <!-- <label>Año de la película</label> -->
+    <input type="text" id="time" placeholder="Añadir fecha película" required>
+    <input type="submit" id='send' value='Enviar'><br><br>
+    <ul id="id01">
+    <input type="radio" onclick="sortTable()" id="id01" name="gender" value="male">
+    <label for="ascendent">Ordenadación descendente</label>
+    <input type="radio" id="id01" onclick="sortTable()" name="gender" value="female">
+    <label for="descent">Ordenación ascendente</label>
+</form>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busca tu película..">
+<br>
+
+<table id="myTable">
+  <tr class="header">
+    <th style="width:60%;">Nombre de la película</th>
+    <th style="width:40%;">Año de la película</th>
+  </tr>
+ <ul id="id01">
+ <tr>
+    <td>Los días que vendrán</td>
+     <td class='number'>2019</td>
+  </tr>
+  <tr>
+    <td>Dolor y Gloria</td>
+    <td class='number'>2019</td>
+  </tr>
+  <tr>
+    <td>Padre no hay más que uno</td>
+    <td class='number'>2018</td>
+  </tr>
+  <tr>
+    <td>Escuadrón 6</td>
+    <td class='number'>1992</td>
+  </tr>
+  <tr>
+    <td>Historia de un matrimonio</td>
+    <td class='number'>1990</td>
+  </tr>
+  <tr>
+    <td>El Irlandés</td>
+    <td class='number'>1998</td>
+  </tr>
+  <tr>
+    <td>Atlantique</td>
+    <td class='number'>1993</td>
+  </tr>
+  <tr>
+    <td>Matrix: Reloaded</td>
+    <td class='number'>1993</td>
+  </tr>
+  <tr>
+    <td>Matrix: Revolutions</td>
+    <td class='number'>1994</td>
+  </tr>
+</ul>
+</table>
+</body>
+</html>
