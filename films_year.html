@@ -22,6 +22,13 @@
       checkMovies()
     }
 
+
+
+
+
+
+    
+
 //Activate button upload film
     window.onload=function() {
       document.getElementById('form').onsubmit=function() {
@@ -126,7 +133,7 @@ function myFunction() {
     <!--<label>Nombre de la película</label> -->
     <input type="text" id="film" placeholder="Añadir película" required>
     <!-- <label>Año de la película</label> -->
-    <input type="text" id="time" placeholder="Añadir fecha película" required>
+    <input type="text" id="time" placeholder="Añadir año película" required>
     <input type="submit" id='send' value='Enviar'><br><br>
     <ul id="id01">
     <input type="radio" onclick="sortTable(1)" id="id01" name="gender" value="male">
@@ -137,7 +144,7 @@ function myFunction() {
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busca tu película..">
 <br>
 
-<table id="myTable">
+<table id="myTable" id="films">
   <tr class="header">
     <th style="width:60%;">Nombre de la película</th>
     <th style="width:40%;">Año de la película</th>
