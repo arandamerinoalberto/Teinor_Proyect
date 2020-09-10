@@ -33,28 +33,36 @@ h2 {
   width: 20%;
   font-size: 16px;
   padding: 12px 20px 12px 20px;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
   margin-bottom: 12px;
 }
 
-#myTable {
+#films { /*#myTable*/
   border-collapse: collapse;
   margin: auto;
-  width: 50%;
+  width: 40%;
   border: 1px solid #ddd;
   font-size: 18px;
 }
 
-#myTable th, #myTable td {
+#films th, #films td {
   text-align: left;
   padding: 12px;
 }
 
-#myTable tr {
+#films tr {
   border-bottom: 1px solid #ddd;
 }
 
-#myTable tr.header, #myTable tr:hover {
+#films tr.header, #films tr:hover {
   background-color: #f1f1f1;
 }
 
+/*#films {
+  margin: auto;
+  text-align: center;
+  background-color: #f1f1f1;
+  padding: 12px;Relleno desde el texto de la tabla 
+  border: 1px solid black;
+  border-bottom: 1px solid black;
+}*/

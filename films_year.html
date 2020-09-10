@@ -1,61 +1,66 @@
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
 	<title>Website para añadir películas</title>
 </head>
 <body>
-<!-- Add js files -->
-<script src="js/highmovies.js"></script>
-<script src="js/checkmovies.js"></script>
-<script src="services/checkmovies.php"></script>
 <!-- Add styles css -->
-<link rel="stylesheet" href="css/styles.css">	
-<!-- Library of jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Add js files -->
+  <script src="js/highmovies.js"></script>
+  <script src="js/checkmovies.js"></script>
+  <!-- Library of jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Script for load films -->
 <script>
-//Load all movies when page loads
-//cargar todos los usuarios cuando se cargue la página
-    window.onload=function() {
+  //Execute function LoadFunctions
+    window.onload=function LoadFunctions() { 
+        //Activate fucntion high()
+        high()
+        //Activate funciton check()
+        check()
+     }
+
+    //Activate button upload film
+    function high() {
+        document.getElementById('form').onsubmit=function() {
+        //desactivar el comportamiento por defecto
+       event.preventDefault()
+      highmovies()
+      }
+    }
+
+  //Load all movies when page loads
+   function check() {
+      //Function of checkMovies
       checkMovies()
     }
 
+</script>
 
-
-
-
-
-    
-
-//Activate button upload film
-    window.onload=function() {
-      document.getElementById('form').onsubmit=function() {
-      event.preventDefault()
-      highmovies()
-    }
-  }
-
+<script>
 //Jquery function
 $(document).ready(function(){
   $("button").click(function(){
-  $("a").click(function(event){
-    /*event.preventDefault();*/
+  $("button").click(function(event){
   });
     $("#film").fadeToggle();
     $("#time").fadeToggle("slow");
     $("#send").fadeToggle("slow");
   });
   });
+</script>
+
+<script>
 
 //New function sort table
 function sortTable(n) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById("myTable");
+  table = document.getElementById("films"); /*myTable*/
   switching = true;
   //Set the sorting direction to ascending:
-  dir = "asc"; 
+  dir = "asc";
   /*Make a loop that will continue until
   no switching has been done:*/
   while (switching) {
@@ -93,7 +98,7 @@ function sortTable(n) {
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
       //Each time a switch is done, increase this count by 1:
-      switchcount ++;      
+      switchcount ++;
     } else {
       /*If no switching has been done AND the direction is "asc",
       set the direction to "desc" and run the while loop again.*/
@@ -105,15 +110,18 @@ function sortTable(n) {
   }
 }
 
+</script>
+
+<script>
 //Function for search films
 function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
+  var input, filter, table, tr, td, i, th, txtValue;
+  input = document.getElementById("myInput"); /*myInput*/
   filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
+  table = document.getElementById("films"); //("myTable")
+  tr = table.getElementsByTagName("tr"); /*"tr"*/
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
+    td = tr[i].getElementsByTagName("td")[0]; /*"td"*/
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -121,10 +129,9 @@ function myFunction() {
       } else {
         tr[i].style.display = "none";
       }
-    }       
+    }
   }
 }
-
 </script>
 
 <h2>SISTEMA PARA AÑADIR PELÍCULAS</h2>
@@ -135,58 +142,22 @@ function myFunction() {
     <!-- <label>Año de la película</label> -->
     <input type="text" id="time" placeholder="Añadir año película" required>
     <input type="submit" id='send' value='Enviar'><br><br>
+
     <ul id="id01">
     <input type="radio" onclick="sortTable(1)" id="id01" name="gender" value="male">
     <label for="ascendent">Ordenadación descendente</label>
     <input type="radio" onclick="sortTable(1)" id="id01"  name="gender" value="female">
     <label for="descent">Ordenación ascendente</label>
   </form>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busca tu película..">
-<br>
 
-<table id="myTable" id="films">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busca tu película..">
+<br><br><br>
+
+<table id='films'>
   <tr class="header">
-    <th style="width:60%;">Nombre de la película</th>
-    <th style="width:40%;">Año de la película</th>
+    <th style="width:60%; margin:auto;">Nombre de la película</th>
+    <th style="width:40%; margin:auto;">Año de la película</th>
   </tr>
- <ul id="id01">
- <tr>
-    <td>Los días que vendrán</td>
-     <td class='number'>2019</td>
-  </tr>
-  <tr>
-    <td>Dolor y Gloria</td>
-    <td class='number'>2019</td>
-  </tr>
-  <tr>
-    <td>Padre no hay más que uno</td>
-    <td class='number'>2018</td>
-  </tr>
-  <tr>
-    <td>Escuadrón 6</td>
-    <td class='number'>1992</td>
-  </tr>
-  <tr>
-    <td>Historia de un matrimonio</td>
-    <td class='number'>1990</td>
-  </tr>
-  <tr>
-    <td>El Irlandés</td>
-    <td class='number'>1998</td>
-  </tr>
-  <tr>
-    <td>Atlantique</td>
-    <td class='number'>1993</td>
-  </tr>
-  <tr>
-    <td>Matrix: Reloaded</td>
-    <td class='number'>1993</td>
-  </tr>
-  <tr>
-    <td>Matrix: Revolutions</td>
-    <td class='number'>1994</td>
-  </tr>
-</ul>
-</table>
+</table><br><br>
 </body>
 </html>

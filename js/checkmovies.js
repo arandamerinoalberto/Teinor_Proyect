@@ -1,4 +1,5 @@
 function checkMovies() {
+	//Ajax petition
 	var url = 'services/checkmovies.php'
 
 	var parameters = {
@@ -17,7 +18,7 @@ function checkMovies() {
 	.then(function(films) {
 		//console.log(films)
 		if (films.length==0) {
-			alert('no hay peliculas')
+			alert('No hay peliculas: ¡Añádelas tu mismo!')
 		} else {
 			//build rows
 			/*
@@ -27,7 +28,7 @@ function checkMovies() {
 
 			for (i in films) {
 				rowsTables += `<tr>`
-				rowsTables += `<td><input type='radio' name='film' value='${films[i]['idfilm']}'></td>`
+				/*rowsTables += `<td><input type='number' name='film' value='${films[i]['idfilm']}'></td>`*/
 				rowsTables += `<td>${films[i].film}</td>`
 				rowsTables += `<td>${films[i].time}</td>`
 				rowsTables += `</tr>`

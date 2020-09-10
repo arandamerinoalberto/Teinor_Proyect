@@ -1,6 +1,6 @@
 <?php
 	//Check Movies
-	
+
 	//Retrieve the id of the movie consult
 	if (isset($_POST['idfilm'])) {
 
@@ -10,7 +10,7 @@
 		$sql = "SELECT * FROM films WHERE idfilm = $id";
 	} else {
 		//Movie table call
-		$sql = "SELECT * FROM films ORDER BY film";
+		$sql = "SELECT * FROM films";
 	}
 
 	//Connection to database
