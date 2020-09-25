@@ -1,6 +1,10 @@
 # Teinor_Proyect
-Proyecto de entrega práctico para empresa.
-Instrucciones previas:
-1. Activar los módulos de XAMMP tanto los de Apache como los de MySQL.
-2. Una vez activado y desde localhost, abrir el archivo connection.php ubicado en services\bbdd\connection.php.
-3. Abrir por último el archivo films_year.html 
+Practical delivery project for business.
+
+Advance instructions:
+
+1. Activate the XAMMP modules both those of Apache and those of MySQL.
+2. Once activated and from localhost, open the connection.php file located in services \ bbdd \ connection.php.
+3. Finally open the file films_year.html
+
+Greetings!
